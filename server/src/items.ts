@@ -2,7 +2,7 @@ import * as path from "path";
 const Datastore = require("nedb"); 
 
 export interface IItem{
-    _id?: number, name: string, description: string, email: string
+    _id?: number, name: string, description?: string, email: string
 }
 
 export class Worker{

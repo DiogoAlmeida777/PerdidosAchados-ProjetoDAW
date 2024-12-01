@@ -1,0 +1,11 @@
+ADD ITEM:
+
+curl -X POST "http://localhost:8080/lost-items" -H "Content-Type: application/json" -d "{\"_id\": \"340\", \"name\": \"carteira\", \"description\": \"Carteira preta de couro com 20 paus la dentro\", \"email\": \"john@example.com\"}"
+
+DELETE ITEM:
+
+curl -X DELETE "http://localhost:8080/contacts/CONTACT_ID"
+
+SEND E-MAIL:
+
+curl -X POST "http://localhost:8080/notifications" -H "Content-Type: application/json" -d "{\"from\": \"a79810@ualg.pt\", \"to\": \"a79810@ualg.pt\", \"subject\": \"Test Email\", \"text\": \"This is a test email.\"}"
