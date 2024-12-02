@@ -47,10 +47,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const express_1 = __importDefault(require("express"));
+const multer_1 = __importDefault(require("multer"));
 const serverinfo_1 = require("./serverinfo");
 const SMTP = __importStar(require("./SMTP"));
 const Items = __importStar(require("./items"));
 const app = (0, express_1.default)();
+const storage = multer_1.default.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads');
+    },
+    filename: function (req, file, cb) {
+        //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.originalname);
+    }
+});
+const upload = (0, multer_1.default)({ storage: storage });
 app.use(express_1.default.json());
 app.use("/", express_1.default.static(path_1.default.join(__dirname, "../../client/dist")));
 app.use(function (inRequest, inResponse, inNext) {
@@ -59,6 +70,7 @@ app.use(function (inRequest, inResponse, inNext) {
     inResponse.header("Access-Control-Allow-Headers", "Origin,X-Requested-With,Content-Type,Accept");
     inNext(); //chama o próximo middleware
 });
+app.use("/uploads", express_1.default.static(path_1.default.join(__dirname, "uploads")));
 app.post("/notifications", (inRequest, inResponse) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const smtpWorker = new SMTP.Worker(serverinfo_1.serverInfo);
@@ -79,11 +91,18 @@ app.get("/lost-items", (inRequest, inResponse) => __awaiter(void 0, void 0, void
         inResponse.send("error");
     }
 }));
-app.post("/lost-items", (inRequest, inResponse) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/lost-items", upload.single('image'), (inRequest, inResponse) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const itemsWorker = new Items.Worker();
-        const item = yield itemsWorker.addItem(inRequest.body);
-        inResponse.json(item);
+        const { name, description, email } = inRequest.body;
+        const item = {
+            name,
+            description,
+            email,
+            imagePath: inRequest.file ? `/uploads/${inRequest.file.filename}` : undefined
+        };
+        const savedItem = yield itemsWorker.addItem(item);
+        inResponse.json(savedItem);
     }
     catch (inError) {
         inResponse.send("error");
