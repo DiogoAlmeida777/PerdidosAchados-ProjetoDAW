@@ -1,10 +1,10 @@
 ADD ITEM:
 
-curl -X POST "http://localhost:8080/lost-items" -H "Content-Type: application/json" -d "{\"_id\": \"340\", \"name\": \"carteira\", \"description\": \"Carteira preta de couro com 20 paus la dentro\", \"email\": \"john@example.com\"}"
+curl -X POST http://127.0.0.1:8080/lost-items -H "Content-Type: multipart/form-data" -F "image=@./ApuCareca.jpg"  -F "name=cabelo"  -F "description=malta perdi o cabelo" -F "email=a79944@ualg.pt"
 
 DELETE ITEM:
 
-curl -X DELETE "http://localhost:8080/contacts/CONTACT_ID"
+curl -X DELETE "http://localhost:8080/lost-items/CONTACT_ID"
 
 SEND E-MAIL:
 
