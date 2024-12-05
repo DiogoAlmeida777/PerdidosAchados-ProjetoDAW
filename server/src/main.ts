@@ -35,7 +35,7 @@ app.use(function(inRequest: Request, inResponse: Response, inNext: NextFunction)
     inNext();//chama o próximo middleware
 });
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")))
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")))
 
 app.post("/notifications", async (inRequest:Request, inResponse: Response) => {
     try{

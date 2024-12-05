@@ -9,9 +9,10 @@ import App from "./components/App"
 //import BaseLayout from "./components/BaseLayout";
 import * as Items from "./LostItems";
 import BaseLayout from "./components/BaseLayout";
+//import Card from "./components/Card";
 
 
-const baseComponent = ReactDOM.render(<BaseLayout />, document.body);
+const baseComponent = ReactDOM.render(<App/>, document.body);
 
 //baseComponent.state.showHidePleaseWait(true);
 

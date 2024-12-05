@@ -1,16 +1,14 @@
 
 import React from "react";
-import Card from "./Card";
+import LostItems from "./Card";
 
+const App: React.FC = () => {
+  return (
+    <div>
+      <LostItems />
+    </div>
+  );
+};
 
-function App() {
-    return(
-        <Card/>
-    );
-
-}
-
-export default App
-
-
+export default App;
 
