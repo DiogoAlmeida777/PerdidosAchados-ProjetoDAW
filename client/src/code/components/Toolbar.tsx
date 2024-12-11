@@ -5,14 +5,12 @@ import React from "react";
 import Button from "@mui/material/Button";
 
 
-
 /**
  * Toolbar.
  */
-const Toolbar = ({ state }) => (
+const Toolbar = () => (
   <div>
-    <Button variant="contained" color="primary" size="small" style={{ marginRight:10 }}
-      onClick={ state.showAddItem } >
+    <Button variant="contained" color="primary" size="small" style={{ marginRight:10 }}>
       Post Lost Item
     </Button>
   </div>

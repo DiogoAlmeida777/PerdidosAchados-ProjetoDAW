@@ -8,7 +8,6 @@ import ReactDOM from "react-dom";
 import App from "./components/App"
 //import BaseLayout from "./components/BaseLayout";
 import * as Items from "./LostItems";
-import BaseLayout from "./components/BaseLayout";
 //import Card from "./components/Card";
 
 
