@@ -1,10 +1,13 @@
 
 import React from "react";
 import LostItems from "./Card";
+import { Toolbar } from "@mui/material";
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className="app">
+      <h1 className="title">Lost & Found</h1>
+      <Toolbar />
       <LostItems />
     </div>
   );

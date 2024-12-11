@@ -47,8 +47,8 @@ const storage = multer_1.default.diskStorage({
         cb(null, './uploads');
     },
     filename: function (req, file, cb) {
-        //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.originalname);
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.originalname + uniqueSuffix);
     }
 });
 const upload = (0, multer_1.default)({ storage: storage });

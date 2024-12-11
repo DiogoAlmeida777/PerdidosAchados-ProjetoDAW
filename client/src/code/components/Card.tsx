@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../../css/main.css";
+import Button from "@mui/material/Button";
 
 interface IItem {
   _id?: number;
@@ -29,30 +31,18 @@ const LostItems: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Lost Items</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+    <div className="lost-items-container">
+      {error && <p className="error-message">{error}</p>}
+      <div className="items-grid">
         {items.map((item) => (
-          <div
-            key={item._id}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "10px",
-              textAlign: "center",
-            }}
-          >
-            {item.imagePath && (
-              <img
-                src={item.imagePath}
-                alt={item.name}
-                style={{ maxWidth: "100%", borderRadius: "10px" }}
-              />
-            )}
-            <h2>{item.name}</h2>
-            {item.description && <p>{item.description}</p>}
-            <p><strong>Contact:</strong> {item.email}</p>
+          <div className="item-card" key={item._id}>
+              {item.imagePath && <img className="item-image" src={item.imagePath} alt={item.name} />}
+              <h2>{item.name}</h2>
+              {item.description && <p>{item.description}</p>}
+              <p><strong>Contact:</strong> {item.email}</p>
+              <Button className="card-button" variant="contained" color="primary" size="small" style={{ marginTop:10 }}>
+                I FOUND IT!
+              </Button>
           </div>
         ))}
       </div>

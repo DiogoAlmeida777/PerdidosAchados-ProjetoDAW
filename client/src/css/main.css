@@ -1,0 +1,59 @@
+
+
+.title{
+    font-size: 2rem; /* Adjust as needed */
+    font-weight: bold;
+    margin: 20px 0; /* Space around the title */
+    text-align: center; /* Center text alignment */
+}
+
+
+.lost-items-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.items-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Spacing between cards */
+    justify-content: center; /* Horizontally center the grid */
+    align-content: center; /* Vertically center the grid if possible */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.item-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.473);
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    max-width: 500px;
+    
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distribute space to push button to the bottom */
+    align-items: center; /* Center items horizontally */
+}
+
+.item-image{
+    width: 60%;
+    height: auto; 
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+}
+
+.card-button{
+    margin-top: auto;
+    align-self: center;
+}
+
+
